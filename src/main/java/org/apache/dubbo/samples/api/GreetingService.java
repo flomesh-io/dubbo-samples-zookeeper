@@ -22,5 +22,61 @@ package org.apache.dubbo.samples.api;
 public interface GreetingService {
 
     String sayHello(String name);
+    
+    String healthCheck();
 
+    Person sayHelloPerson(Person p);
+    
+    class Person implements java.io.Serializable{
+    	String name = "no-name";
+    	public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		public int getAge() {
+			return age;
+		}
+		public void setAge(int age) {
+			this.age = age;
+		}
+		public String getPet() {
+			return pet;
+		}
+		public void setPet(String pet) {
+			this.pet = pet;
+		}
+		public Father father;
+		int age = 1;
+    	String pet = "dog";
+    	public Person(String n, int a, String p){
+    		this.name = n;
+    		this.age = a;
+    		this.pet = p;
+    		this.father = new Father(n, a);
+    	}
+    }
+    
+    class Father implements java.io.Serializable{
+    	String name = "no-name";
+		int age = 30;
+    	public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		public int getAge() {
+			return age;
+		}
+		public void setAge(int age) {
+			this.age = age;
+		}
+    	
+    	public Father(String n, int a) {
+    		this.name = "Grand " + n;
+    		this.age = 30 + a;
+    	}
+    }
 }

@@ -21,7 +21,7 @@ package org.apache.dubbo.samples;
 
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.apache.dubbo.samples.action.GreetingServiceConsumer;
-
+import org.apache.dubbo.samples.api.GreetingService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -35,6 +35,9 @@ public class ConsumerBootstrap {
         GreetingServiceConsumer greetingServiceConsumer = context.getBean(GreetingServiceConsumer.class);
         String hello = greetingServiceConsumer.doSayHello("zookeeper");
         System.out.println("result: " + hello);
+        System.out.println(greetingServiceConsumer.healthCheck());
+        GreetingService.Person p = new GreetingService.Person("booker", 12, "cat");
+        System.out.println(greetingServiceConsumer.doSayHelloPerson(p));
     }
 
     @Configuration

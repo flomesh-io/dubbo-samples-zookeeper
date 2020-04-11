@@ -33,5 +33,12 @@ public class GreetingServiceConsumer {
     public String doSayHello(String name) {
         return greetingService.sayHello(name);
     }
+    
+    public String healthCheck() {
+    	return greetingService.healthCheck();
+    }
 
+    public GreetingService.Person doSayHelloPerson(GreetingService.Person person) {
+    	return greetingService.sayHelloPerson(person);
+    }
 }
